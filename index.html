@@ -3,73 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Amin Skenderi — personal website and projects.">
-  <title>Amin Skenderi</title>
+  <meta name="description" content="Amin Skenderi — Computer Engineering student, robotics team lead, systems & AI developer based in Berlin.">
+  <title>Amin Skenderi // root</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
   <header class="site-header">
     <nav class="container">
-      <a class="brand" href="#top">amin skenderi</a>
+      <a class="brand" href="#top">&lt;AS/&gt;</a>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#skills">skills</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#timeline">timeline</a></li>
+        <li><a href="#contact">contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="top">
+    <!-- HERO -->
     <section class="hero container">
-      <h1>Hi, I'm Amin.</h1>
+      <p class="hero-pre">// initializing profile_</p>
+      <h1 class="glitch" data-text="AMIN SKENDERI">AMIN SKENDERI</h1>
       <p class="tagline">
-        I build things with software — currently exploring AI applications and IoT.
+        <span class="prompt">&gt;</span> <span id="typed"></span><span class="cursor">█</span>
       </p>
+      <p class="hero-sub">
+        Computer Engineering @ TU Berlin · Robotics Team Lead · Berlin, Germany
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">view projects</a>
+        <a class="btn btn-ghost" href="#contact">make contact</a>
+      </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about" class="container">
-      <h2>About</h2>
-      <p>
-        I'm a developer interested in practical applications of machine learning,
-        retrieval-augmented generation, and connected hardware. This site is where
-        I collect my projects and notes.
-      </p>
+      <h2><span class="h-num">01</span> whoami</h2>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="terminal-title">amin@berlin:~$</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="prompt">$</span> cat about.txt</p>
+          <p>
+            Computer Engineering student and robotics team lead at TU Berlin with
+            hands-on experience in systems programming, distributed systems, and
+            real-time data processing. Proficient in C/C++ and Python, with a
+            growing focus on AI/LLM integration.
+          </p>
+          <p>
+            Passionate about building containerized, production-ready systems —
+            from low-level file systems in C to RAG pipelines and autonomous robots.
+          </p>
+          <p><span class="prompt">$</span> _</p>
+        </div>
+      </div>
     </section>
 
+    <!-- SKILLS -->
+    <section id="skills" class="container">
+      <h2><span class="h-num">02</span> skill_matrix</h2>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>languages</h3>
+          <ul class="chips">
+            <li>Python</li><li>C</li><li>C++</li><li>Java</li><li>SQL</li>
+            <li>Bash</li><li>MATLAB</li><li>MIPS Assembly</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>ai / llm</h3>
+          <ul class="chips">
+            <li>Anthropic API</li><li>OpenAI API</li><li>LangChain</li>
+            <li>RAG pipelines</li><li>Hugging Face</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>frameworks &amp; systems</h3>
+          <ul class="chips">
+            <li>FastAPI</li><li>Flask</li><li>Node.js</li><li>ROS 2</li>
+            <li>MQTT</li><li>ZeroMQ</li><li>REST</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>tools</h3>
+          <ul class="chips">
+            <li>Linux</li><li>Git / CI-CD</li><li>Docker</li><li>Kubernetes</li>
+            <li>AWS</li><li>MySQL</li><li>Arduino</li><li>CMake</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
     <section id="projects" class="container">
-      <h2>Projects</h2>
+      <h2><span class="h-num">03</span> project_log</h2>
       <div class="project-grid">
         <article class="project-card">
-          <h3>PDF Reader</h3>
+          <p class="card-meta">2026 · independent</p>
+          <h3>LLM Document Analysis Pipeline</h3>
           <p>
-            A retrieval-augmented question-answering API for PDF documents.
-            Upload a PDF, ask questions, get grounded answers.
+            Microservice that classifies, summarizes, and extracts structured JSON
+            from unstructured PDFs. RAG pipeline with FAISS vector store, async
+            FastAPI endpoints, fully containerized, tested with pytest.
           </p>
-          <p class="tech">FastAPI · LangChain · Claude · Voyage AI · FAISS</p>
+          <p class="tech">Python · LangChain · FastAPI · FAISS · Docker</p>
         </article>
+
         <article class="project-card">
-          <h3>IoT Project</h3>
+          <p class="card-meta">2026 · TU Berlin · team lead</p>
+          <h3>Autonomous Robot</h3>
           <p>
-            Coming soon.
+            Leading a team of 3 building an autonomous robot on Raspberry Pi with
+            ROS 2 — path planning, modular architecture, code reviews, and system
+            integration.
           </p>
-          <p class="tech">In progress</p>
+          <p class="tech">C++ · Python · ROS 2 · Raspberry Pi</p>
+        </article>
+
+        <article class="project-card">
+          <p class="card-meta">2026 · independent</p>
+          <h3>IoT Data Pipeline</h3>
+          <p>
+            Containerized real-time pipeline streaming sensor data from Arduino
+            through Python to MQTT, with automated integration tests for
+            transmission reliability.
+          </p>
+          <p class="tech">Arduino · Python · MQTT · Docker</p>
+        </article>
+
+        <article class="project-card">
+          <p class="card-meta">2025–2026 · TU Berlin</p>
+          <h3>Distributed Backend Systems</h3>
+          <p>
+            Custom HTTP server in C, Chord DHT for scalable resource discovery,
+            and a ZeroMQ-based distributed processing system with MapReduce-style
+            task distribution.
+          </p>
+          <p class="tech">C · ZeroMQ · Chord DHT</p>
+        </article>
+
+        <article class="project-card">
+          <p class="card-meta">2025 · TU Berlin</p>
+          <h3>File System from Scratch</h3>
+          <p>
+            Low-level file system structures in C with memory-efficient data
+            handling and full file/directory operations — read/write, copy,
+            delete, import/export.
+          </p>
+          <p class="tech">C · File Systems</p>
         </article>
       </div>
     </section>
 
-    <section id="contact" class="container">
-      <h2>Contact</h2>
-      <ul class="contact-links">
-        <li><a href="https://github.com/AmkoAmin">GitHub</a></li>
-        <li><a href="mailto:skenderi2026.ai@gmail.com">Email</a></li>
+    <!-- TIMELINE -->
+    <section id="timeline" class="container">
+      <h2><span class="h-num">04</span> timeline</h2>
+      <ul class="timeline">
+        <li>
+          <span class="time">2024 — 2027</span>
+          <div>
+            <h3>B.Sc. Computer Engineering · TU Berlin</h3>
+            <p>4th semester, on track to finish in 5. Top 5% in Data Structures &amp;
+            Algorithms and Signals &amp; Systems, top score in Theoretical Computer Science.</p>
+          </div>
+        </li>
+        <li>
+          <span class="time">2023 — 2026</span>
+          <div>
+            <h3>Coding Trainer · CodingGiants GmbH</h3>
+            <p>Taught Python, algorithms, and structured programming to teenagers;
+            programming fundamentals with Scratch for kids.</p>
+          </div>
+        </li>
+        <li>
+          <span class="time">2024</span>
+          <div>
+            <h3>Abitur · Hannah-Arendt-Gymnasium</h3>
+            <p>Final grade 1.2 · Computer Science Award · focus on CS, physics, and math.</p>
+          </div>
+        </li>
       </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container">
+      <h2><span class="h-num">05</span> make_contact</h2>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="terminal-title">uplink</span>
+        </div>
+        <div class="terminal-body contact-body">
+          <p><span class="prompt">$</span> open --channel</p>
+          <ul class="contact-links">
+            <li><a href="https://github.com/AmkoAmin">github.com/AmkoAmin</a></li>
+            <li><a href="mailto:amin.skenderi.tub@gmail.com">amin.skenderi.tub@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2026 Amin Skenderi</p>
+      <p>© 2026 Amin Skenderi · Berlin · <span class="footer-blink">▮</span> no cookies, no tracking</p>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
