@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>amin skenderi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Amin Skenderi — personal website and projects.">
+  <title>Amin Skenderi</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Welcome to aminskenderi.me</h1>
-  <p>My IoT project is coming soon.</p>
+  <header class="site-header">
+    <nav class="container">
+      <a class="brand" href="#top">amin skenderi</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <h1>Hi, I'm Amin.</h1>
+      <p class="tagline">
+        I build things with software — currently exploring AI applications and IoT.
+      </p>
+    </section>
+
+    <section id="about" class="container">
+      <h2>About</h2>
+      <p>
+        I'm a developer interested in practical applications of machine learning,
+        retrieval-augmented generation, and connected hardware. This site is where
+        I collect my projects and notes.
+      </p>
+    </section>
+
+    <section id="projects" class="container">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>PDF Reader</h3>
+          <p>
+            A retrieval-augmented question-answering API for PDF documents.
+            Upload a PDF, ask questions, get grounded answers.
+          </p>
+          <p class="tech">FastAPI · LangChain · Claude · Voyage AI · FAISS</p>
+        </article>
+        <article class="project-card">
+          <h3>IoT Project</h3>
+          <p>
+            Coming soon.
+          </p>
+          <p class="tech">In progress</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h2>Contact</h2>
+      <ul class="contact-links">
+        <li><a href="https://github.com/AmkoAmin">GitHub</a></li>
+        <li><a href="mailto:skenderi2026.ai@gmail.com">Email</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Amin Skenderi</p>
+    </div>
+  </footer>
 </body>
 </html>
