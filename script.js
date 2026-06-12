@@ -165,6 +165,7 @@ async function ingest(file) {
     }
     const data = await response.json();
     documentIndexed = true;
+    questionInput.placeholder = "ask the document anything…";
     dropzone.classList.add("indexed");
     dropzoneText.textContent = `[ ${data.filename} — ${data.chunks_indexed} chunks indexed. drop another file to add more ]`;
     logLine("log-info", `# ${data.filename} indexed (${data.chunks_indexed} chunks) — ask away`);

@@ -496,8 +496,9 @@ h2::after {
 
 .ask-form input[type="text"]:disabled,
 .ask-form .btn:disabled {
-  opacity: 0.45;
+  opacity: 0.55;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .ask-form .btn {
@@ -505,6 +506,9 @@ h2::after {
   color: var(--cyan);
   background: transparent;
   cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .lab-log {
