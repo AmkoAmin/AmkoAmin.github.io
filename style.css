@@ -9,6 +9,8 @@
   --border: #1d2236;
   --glow-cyan: 0 0 8px rgba(0, 240, 255, 0.55);
   --glow-magenta: 0 0 8px rgba(255, 43, 214, 0.55);
+  --red: #ff2a44;
+  --glow-red: 0 0 10px rgba(255, 42, 68, 0.65);
 }
 
 * {
@@ -121,7 +123,7 @@ a {
 
 /* ---- hero ---- */
 .hero {
-  padding: 6.5rem 1.25rem 4rem;
+  padding: 3.5rem 1.25rem 2.5rem;
 }
 
 .hero-pre {
@@ -307,6 +309,70 @@ h2::after {
 
 .terminal-body p:last-child {
   margin-bottom: 0;
+}
+
+/* ---- lab callout (hero) ---- */
+.lab-callout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  margin-top: 2.4rem;
+  padding: 1.1rem 1.3rem;
+  border: 2px solid var(--red);
+  color: var(--red);
+  text-decoration: none;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.4vw, 1.15rem);
+  letter-spacing: 0.06em;
+  text-shadow: var(--glow-red);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  animation: callout-pulse 1.7s ease-in-out infinite;
+}
+
+.lab-callout:hover {
+  background: rgba(255, 42, 68, 0.12);
+}
+
+.lab-callout .callout-text small {
+  display: block;
+  font-family: "Share Tech Mono", monospace;
+  font-weight: 400;
+  font-size: 0.72em;
+  letter-spacing: 0.1em;
+  margin-top: 0.3rem;
+  color: var(--text);
+  text-shadow: none;
+}
+
+.callout-arrows {
+  white-space: nowrap;
+  font-size: 1.25em;
+  animation: arrow-bounce 0.9s ease-in-out infinite;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateY(-4px); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes callout-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 42, 68, 0.35), inset 0 0 10px rgba(255, 42, 68, 0.08); }
+  50% { box-shadow: 0 0 26px rgba(255, 42, 68, 0.75), inset 0 0 22px rgba(255, 42, 68, 0.18); }
+}
+
+.red-arrows {
+  display: inline-block;
+  color: var(--red);
+  text-shadow: var(--glow-red);
+  animation: arrow-nudge 1s ease-in-out infinite;
+}
+
+@keyframes arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(7px); }
 }
 
 /* ---- pdf lab ---- */
@@ -690,7 +756,9 @@ h2::after {
     animation: none;
     opacity: 0;
   }
-  .cursor, .footer-blink {
+  .cursor, .footer-blink,
+  .lab-callout, .callout-arrows, .red-arrows,
+  .uplink-badge.online .uplink-dot, .lab-log .log-busy {
     animation: none;
   }
   html {
