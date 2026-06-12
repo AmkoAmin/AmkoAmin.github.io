@@ -18,6 +18,7 @@
     <nav class="container">
       <a class="brand" href="#top">&lt;AS/&gt;</a>
       <ul class="nav-links">
+        <li><a href="#pdf-lab" class="nav-hot">pdf lab</a></li>
         <li><a href="#about">about</a></li>
         <li><a href="#skills">skills</a></li>
         <li><a href="#projects">projects</a></li>
@@ -39,8 +40,51 @@
         Computer Engineering @ TU Berlin · Robotics Team Lead · Berlin, Germany
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">view projects</a>
-        <a class="btn btn-ghost" href="#contact">make contact</a>
+        <a class="btn btn-primary" href="#pdf-lab">▶ try the pdf lab</a>
+        <a class="btn btn-ghost" href="#projects">view projects</a>
+      </div>
+    </section>
+
+    <!-- PDF LAB -->
+    <section id="pdf-lab" class="container">
+      <h2>
+        <span class="h-num">00</span> pdf_lab
+        <span class="uplink-badge" id="uplink-badge"><span class="uplink-dot"></span>checking uplink…</span>
+      </h2>
+      <p class="lab-intro">
+        This is live. Upload a PDF, ask it questions — answered by my own
+        RAG pipeline (FastAPI · LangChain · Claude · FAISS) running on my own hardware.
+      </p>
+      <p class="lab-joke">// don't overuse — I'm using my own Anthropic credits :)</p>
+
+      <div class="terminal lab-terminal">
+        <div class="terminal-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="terminal-title">rag@pdf-lab:~$</span>
+        </div>
+        <div class="terminal-body">
+          <div id="lab-offline" class="lab-offline hidden">
+            <p><span class="prompt">!</span> UPLINK OFFLINE — the backend lives on my own machine
+            and it seems to be asleep right now. Come back later.</p>
+            <button class="btn btn-ghost" id="retry-uplink" type="button">retry uplink</button>
+          </div>
+
+          <div id="lab-ui" class="hidden">
+            <label class="dropzone" id="dropzone">
+              <input type="file" id="file-input" accept=".pdf,.txt" hidden>
+              <span id="dropzone-text">[ drop a pdf here — or click to upload ]</span>
+            </label>
+
+            <form id="ask-form" class="ask-form">
+              <span class="prompt">&gt;</span>
+              <input type="text" id="question" placeholder="ask the document anything…"
+                     autocomplete="off" maxlength="500" disabled>
+              <button type="submit" class="btn btn-primary" id="ask-btn" disabled>transmit</button>
+            </form>
+
+            <div id="lab-log" class="lab-log" aria-live="polite"></div>
+          </div>
+        </div>
       </div>
     </section>
 

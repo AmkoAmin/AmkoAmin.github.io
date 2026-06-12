@@ -114,6 +114,11 @@ a {
   text-shadow: var(--glow-cyan);
 }
 
+.nav-links a.nav-hot {
+  color: var(--magenta);
+  text-shadow: var(--glow-magenta);
+}
+
 /* ---- hero ---- */
 .hero {
   padding: 6.5rem 1.25rem 4rem;
@@ -302,6 +307,193 @@ h2::after {
 
 .terminal-body p:last-child {
   margin-bottom: 0;
+}
+
+/* ---- pdf lab ---- */
+.hidden {
+  display: none !important;
+}
+
+.uplink-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.6rem;
+  margin-left: 0.8rem;
+  vertical-align: middle;
+}
+
+.uplink-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.uplink-badge.online {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.uplink-badge.online .uplink-dot {
+  background: var(--cyan);
+  box-shadow: var(--glow-cyan);
+  animation: blink 2s steps(1) infinite;
+}
+
+.uplink-badge.offline {
+  color: var(--magenta);
+  border-color: var(--magenta);
+}
+
+.uplink-badge.offline .uplink-dot {
+  background: var(--magenta);
+  box-shadow: var(--glow-magenta);
+}
+
+.lab-intro {
+  margin: 0 0 0.4rem;
+}
+
+.lab-joke {
+  color: var(--magenta);
+  text-shadow: var(--glow-magenta);
+  margin: 0 0 1.4rem;
+  letter-spacing: 0.04em;
+}
+
+.lab-terminal {
+  border-color: var(--magenta);
+  box-shadow: 0 0 28px rgba(255, 43, 214, 0.12), 0 0 60px rgba(0, 240, 255, 0.06);
+}
+
+.lab-offline p {
+  color: var(--magenta);
+  margin: 0 0 1rem;
+}
+
+.dropzone {
+  display: block;
+  border: 1px dashed var(--cyan);
+  padding: 1.6rem 1rem;
+  text-align: center;
+  color: var(--cyan);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-bottom: 1rem;
+}
+
+.dropzone:hover,
+.dropzone.dragover {
+  background: rgba(0, 240, 255, 0.07);
+  box-shadow: inset 0 0 18px rgba(0, 240, 255, 0.12);
+}
+
+.dropzone.indexed {
+  border-style: solid;
+  color: var(--text);
+}
+
+.dropzone.busy {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.ask-form {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.ask-form input[type="text"] {
+  flex: 1;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: #0a0a16;
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.8rem;
+  outline: none;
+  min-width: 0;
+}
+
+.ask-form input[type="text"]:focus {
+  border-color: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.ask-form input[type="text"]:disabled,
+.ask-form .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ask-form .btn {
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  background: transparent;
+  cursor: pointer;
+}
+
+.lab-log {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.lab-log .log-q {
+  color: var(--cyan);
+  margin: 0;
+}
+
+.lab-log .log-a {
+  color: var(--text);
+  margin: 0;
+  white-space: pre-wrap;
+  border-left: 2px solid var(--cyan);
+  padding-left: 0.8rem;
+}
+
+.lab-log .log-info {
+  color: var(--muted);
+  margin: 0;
+}
+
+.lab-log .log-err {
+  color: var(--magenta);
+  margin: 0;
+}
+
+.lab-log .log-busy {
+  color: var(--purple);
+  margin: 0;
+  animation: blink 1.1s steps(1) infinite;
+}
+
+.lab-log details {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.8rem;
+}
+
+.lab-log summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.lab-log .source-chunk {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin: 0.6rem 0 0;
+  white-space: pre-wrap;
+  border-left: 2px solid var(--purple);
+  padding-left: 0.7rem;
 }
 
 /* ---- skills ---- */
