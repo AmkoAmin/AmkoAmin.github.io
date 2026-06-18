@@ -492,6 +492,13 @@ h2 {
   margin: 0;
 }
 
+.project-card .repo {
+  margin: 0.6rem 0 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.76rem;
+  word-break: break-all;
+}
+
 /* ---- timeline ---- */
 .timeline {
   list-style: none;

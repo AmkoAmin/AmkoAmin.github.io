@@ -667,6 +667,20 @@ h2::after {
   margin: 0;
 }
 
+.project-card .repo {
+  margin: 0.6rem 0 0;
+  font-size: 0.8rem;
+}
+
+.project-card .repo a {
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.project-card .repo a:hover {
+  color: var(--cyan);
+}
+
 /* ---- timeline ---- */
 .timeline {
   list-style: none;

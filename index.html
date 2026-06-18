@@ -131,29 +131,35 @@
         <div class="skill-group">
           <h3>languages</h3>
           <ul class="chips">
-            <li>Python</li><li>C</li><li>C++</li><li>Java</li><li>SQL</li>
-            <li>Bash</li><li>MATLAB</li><li>MIPS Assembly</li>
+            <li>C</li><li>C++</li><li>Python</li><li>Java</li><li>MATLAB</li>
+            <li>MIPS-Assembler</li><li>SQL</li><li>Bash</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>ai / llm</h3>
           <ul class="chips">
-            <li>Anthropic API</li><li>OpenAI API</li><li>LangChain</li>
-            <li>RAG pipelines</li><li>Hugging Face</li>
+            <li>OpenAI API</li><li>Anthropic API</li><li>LangChain/LangGraph</li>
+            <li>RAG pipelines</li><li>Agentic Workflows</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h3>frameworks &amp; systems</h3>
+          <h3>frameworks &amp; technologies</h3>
           <ul class="chips">
-            <li>FastAPI</li><li>Flask</li><li>Node.js</li><li>ROS 2</li>
-            <li>MQTT</li><li>ZeroMQ</li><li>REST</li>
+            <li>FastAPI</li><li>Flask</li><li>ROS 2</li><li>MQTT</li>
+            <li>Valgrind</li><li>ZeroMQ</li><li>REST</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>tools</h3>
           <ul class="chips">
-            <li>Linux</li><li>Git / CI-CD</li><li>Docker</li><li>Kubernetes</li>
-            <li>AWS</li><li>MySQL</li><li>Arduino</li><li>CMake</li>
+            <li>Linux</li><li>Git</li><li>GitHub (CI/CD)</li><li>Docker (Compose)</li>
+            <li>CMake</li><li>colcon</li><li>Azure</li><li>MySQL</li><li>Arduino</li><li>Blender</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>spoken languages</h3>
+          <ul class="chips">
+            <li>German (Native/C2)</li><li>English (Fluent/C1)</li>
           </ul>
         </div>
       </div>
@@ -167,55 +173,48 @@
           <p class="card-meta">2026 · independent</p>
           <h3>LLM Document Analysis Pipeline</h3>
           <p>
-            Microservice that classifies, summarizes, and extracts structured JSON
-            from unstructured PDFs. RAG pipeline with FAISS vector store, async
-            FastAPI endpoints, fully containerized, tested with pytest.
+            Python/FastAPI backend that answers natural-language questions over
+            uploaded PDFs via a RAG pipeline with LangChain, Claude (Sonnet 4.6),
+            Voyage embeddings, and a FAISS index, containerized with Docker.
+            Hardened for public deployment with domain-scoped CORS, per-IP rate
+            limiting, and upload-size limits; validated with a pytest unit and
+            integration suite. Self-hosted: a static GitHub Pages frontend served
+            through a Cloudflare Tunnel to the Dockerized API.
           </p>
-          <p class="tech">Python · LangChain · FastAPI · FAISS · Docker</p>
+          <p class="tech">Python · FastAPI · LangChain · Claude · Voyage · FAISS · Docker</p>
+          <p class="repo"><a href="https://github.com/AmkoAmin/llm-doc-pipeline">github.com/AmkoAmin/llm-doc-pipeline</a></p>
         </article>
 
         <article class="project-card">
           <p class="card-meta">2026 · TU Berlin · team lead</p>
-          <h3>Autonomous Robot</h3>
+          <h3>Autonomous Robot with ROS 2</h3>
           <p>
-            Leading a team of 3 building an autonomous robot on Raspberry Pi with
-            ROS 2 — path planning, modular architecture, code reviews, and system
-            integration.
+            Led a 3-person team building an autonomous robot in C++ with ROS 2 on
+            a Raspberry Pi that localizes itself in a maze and navigates to
+            arbitrary target cells. Implemented grid-based localization by
+            detecting maze walls from Lidar data via a Hough transform and
+            matching against a known map, plus Dijkstra path planning and
+            closed-loop motion control combining wheel-encoder odometry with
+            P-controllers.
           </p>
-          <p class="tech">C++ · Python · ROS 2 · Raspberry Pi</p>
-        </article>
-
-        <article class="project-card">
-          <p class="card-meta">2026 · independent</p>
-          <h3>IoT Data Pipeline</h3>
-          <p>
-            Containerized real-time pipeline streaming sensor data from Arduino
-            through Python to MQTT, with automated integration tests for
-            transmission reliability.
-          </p>
-          <p class="tech">Arduino · Python · MQTT · Docker</p>
-        </article>
-
-        <article class="project-card">
-          <p class="card-meta">2025–2026 · TU Berlin</p>
-          <h3>Distributed Backend Systems</h3>
-          <p>
-            Custom HTTP server in C, Chord DHT for scalable resource discovery,
-            and a ZeroMQ-based distributed processing system with MapReduce-style
-            task distribution.
-          </p>
-          <p class="tech">C · ZeroMQ · Chord DHT</p>
+          <p class="tech">C++ · ROS 2 · Raspberry Pi · Lidar · Dijkstra</p>
+          <p class="repo"><a href="https://github.com/AmkoAmin/ros2-autonomous-robot">github.com/AmkoAmin/ros2-autonomous-robot</a></p>
         </article>
 
         <article class="project-card">
           <p class="card-meta">2025 · TU Berlin</p>
-          <h3>File System from Scratch</h3>
+          <h3>Distributed HTTP Server &amp; Chord DHT</h3>
           <p>
-            Low-level file system structures in C with memory-efficient data
-            handling and full file/directory operations — read/write, copy,
-            delete, import/export.
+            Served thousands of concurrent connections on a single node with a
+            custom HTTP server in C using low-level socket programming, manual
+            request parsing, and memory-safety verification via Valgrind. Enabled
+            scalable resource discovery by implementing a Chord DHT with
+            consistent hashing and finger-table routing, plus fault-tolerant task
+            distribution through a ZeroMQ-based MapReduce-style system with retry
+            logic.
           </p>
-          <p class="tech">C · File Systems</p>
+          <p class="tech">C · ZeroMQ · Chord DHT · Valgrind</p>
+          <p class="repo"><a href="https://github.com/AmkoAmin/chord-dht-server">github.com/AmkoAmin/chord-dht-server</a></p>
         </article>
       </div>
     </section>
