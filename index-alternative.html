@@ -99,6 +99,11 @@
           </div>
 
           <div id="lab-ui" class="hidden">
+            <div class="lab-mode" role="tablist" aria-label="lab mode">
+              <button type="button" class="mode-btn active" id="mode-demo" role="tab" aria-selected="true">ask about Amin</button>
+              <button type="button" class="mode-btn" id="mode-upload" role="tab" aria-selected="false">upload your own</button>
+            </div>
+
             <label class="dropzone" id="dropzone">
               <input type="file" id="file-input" accept=".pdf,.txt" hidden>
               <span id="dropzone-text">[ drop a pdf here — or click to upload ]</span>

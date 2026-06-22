@@ -83,7 +83,7 @@
       <a href="#pdf-lab" class="lab-callout">
         <span class="callout-arrows" aria-hidden="true">▼▼▼</span>
         <span class="callout-text">
-          TRY IT LIVE: UPLOAD A PDF &amp; ASK IT ANYTHING
+          TRY IT LIVE: ASK MY RÉSUMÉ ANYTHING — OR UPLOAD YOUR OWN PDF
           <small>— my coolest project, running on my own hardware —</small>
         </span>
         <span class="callout-arrows" aria-hidden="true">▼▼▼</span>
@@ -98,8 +98,9 @@
         <span class="uplink-badge" id="uplink-badge"><span class="uplink-dot"></span>checking uplink…</span>
       </h2>
       <p class="lab-intro">
-        This is live. Upload a PDF, ask it questions — answered by my own
-        RAG pipeline (FastAPI · LangChain · Claude · FAISS) running on my own hardware.
+        This is live. Ask questions about my résumé — or switch to upload mode and
+        drop in your own PDF — answered by my own RAG pipeline
+        (FastAPI · LangChain · Claude · FAISS) running on my own hardware.
       </p>
       <p class="lab-joke">// don't overuse — I'm using my own Anthropic credits :)</p>
 
@@ -116,6 +117,11 @@
           </div>
 
           <div id="lab-ui" class="hidden">
+            <div class="lab-mode" role="tablist" aria-label="lab mode">
+              <button type="button" class="mode-btn active" id="mode-demo" role="tab" aria-selected="true">ask about Amin</button>
+              <button type="button" class="mode-btn" id="mode-upload" role="tab" aria-selected="false">upload your own</button>
+            </div>
+
             <label class="dropzone" id="dropzone">
               <input type="file" id="file-input" accept=".pdf,.txt" hidden>
               <span id="dropzone-text">[ drop a pdf here — or click to upload ]</span>

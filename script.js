@@ -62,8 +62,11 @@ const askForm = document.getElementById("ask-form");
 const questionInput = document.getElementById("question");
 const askBtn = document.getElementById("ask-btn");
 const log = document.getElementById("lab-log");
+const modeDemo = document.getElementById("mode-demo");
+const modeUpload = document.getElementById("mode-upload");
 
 let documentIndexed = false;
+let mode = "demo";
 
 function setBadge(state, text) {
   badge.className = `uplink-badge ${state}`;
@@ -139,6 +142,27 @@ function setAskEnabled(enabled) {
   askBtn.disabled = !enabled;
 }
 
+function setMode(next) {
+  mode = next;
+  const demo = mode === "demo";
+  modeDemo.classList.toggle("active", demo);
+  modeUpload.classList.toggle("active", !demo);
+  modeDemo.setAttribute("aria-selected", String(demo));
+  modeUpload.setAttribute("aria-selected", String(!demo));
+  // The demo index is pre-seeded server-side, so questions work immediately;
+  // upload mode needs a document first.
+  dropzone.classList.toggle("hidden", demo);
+  if (demo) {
+    questionInput.placeholder = "ask anything about Amin…";
+    setAskEnabled(true);
+  } else {
+    questionInput.placeholder = documentIndexed
+      ? "ask the document anything…"
+      : "upload a document first…";
+    setAskEnabled(documentIndexed);
+  }
+}
+
 async function ingest(file) {
   if (!file) return;
   if (file.size > MAX_UPLOAD_BYTES) {
@@ -190,7 +214,7 @@ async function ask(question) {
     const response = await fetch(`${API_BASE}/rag/query`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question, top_k: 4 }),
+      body: JSON.stringify({ question, top_k: 4, mode }),
     });
     busy.remove();
     if (!response.ok) {
@@ -211,6 +235,14 @@ async function ask(question) {
 
 if (badge) {
   retryBtn.addEventListener("click", checkUplink);
+
+  if (modeDemo && modeUpload) {
+    modeDemo.addEventListener("click", () => setMode("demo"));
+    modeUpload.addEventListener("click", () => setMode("upload"));
+    setMode("demo");
+  } else {
+    mode = "upload";
+  }
 
   fileInput.addEventListener("change", () => {
     ingest(fileInput.files[0]);
@@ -236,7 +268,8 @@ if (badge) {
   askForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const question = questionInput.value.trim();
-    if (!question || !documentIndexed) return;
+    if (!question) return;
+    if (mode === "upload" && !documentIndexed) return;
     questionInput.value = "";
     ask(question);
   });
