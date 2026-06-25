@@ -70,9 +70,15 @@ const providerSelect = document.getElementById("provider-select");
 // Display names for the chat LLM providers the backend exposes via /providers.
 // The embedding model (Voyage) is unaffected by this choice.
 const PROVIDER_LABELS = { anthropic: "Claude (Sonnet 4.6)", openai: "GPT-4o" };
+const SUPPORTED_PROVIDERS = Object.keys(PROVIDER_LABELS);
 
 let documentIndexed = false;
 let mode = "demo";
+// Which providers actually have a key server-side, and the server default.
+// The dropdown always offers every supported model; unavailable ones are
+// labelled and fall back to the default with an honest note when picked.
+let availableProviders = new Set();
+let defaultProvider = "anthropic";
 
 function setBadge(state, text) {
   badge.className = `uplink-badge ${state}`;
@@ -126,26 +132,43 @@ async function apiErrorMessage(response) {
   }
 }
 
+function renderProviders(supported, available, def) {
+  // Always show every supported model so the choice is visible; mark the ones
+  // without a server-side key as "not enabled" (still selectable — picking one
+  // falls back to the default with an honest note, never an error).
+  availableProviders = new Set(available);
+  defaultProvider = def || available[0] || supported[0] || "anthropic";
+  providerSelect.innerHTML = "";
+  for (const id of supported) {
+    const option = document.createElement("option");
+    option.value = id;
+    const label = PROVIDER_LABELS[id] || id;
+    option.textContent = availableProviders.has(id) ? label : `${label} — not enabled`;
+    providerSelect.append(option);
+  }
+  providerSelect.value = availableProviders.has(defaultProvider)
+    ? defaultProvider
+    : supported[0];
+  providerWrap.classList.toggle("hidden", supported.length < 1);
+}
+
 async function loadProviders() {
-  // Populate the model selector from the backend. Only reveal it when more than
-  // one provider is configured, so it never lies about an unavailable option.
   try {
     const response = await fetch(`${API_BASE}/providers`, {
       signal: AbortSignal.timeout(6000),
     });
     if (!response.ok) throw new Error();
     const data = await response.json();
-    providerSelect.innerHTML = "";
-    for (const id of data.providers) {
-      const option = document.createElement("option");
-      option.value = id;
-      option.textContent = PROVIDER_LABELS[id] || id;
-      providerSelect.append(option);
-    }
-    if (data.default) providerSelect.value = data.default;
-    providerWrap.classList.toggle("hidden", data.providers.length < 2);
+    const supported =
+      data.supported && data.supported.length
+        ? data.supported
+        : data.providers || SUPPORTED_PROVIDERS;
+    renderProviders(supported, data.providers || [], data.default);
   } catch {
-    providerWrap.classList.add("hidden");
+    // Backend too old to report providers: the uplink is up, so assume the
+    // default (Claude) works, show GPT-4o as not enabled. The choice stays
+    // visible and picking GPT-4o falls back cleanly.
+    renderProviders(SUPPORTED_PROVIDERS, ["anthropic"], "anthropic");
   }
 }
 
@@ -237,8 +260,19 @@ async function ingest(file) {
 
 async function ask(question) {
   setAskEnabled(false);
-  const provider = providerSelect.value || null;
-  const modelLabel = provider ? PROVIDER_LABELS[provider] || provider : "llm";
+  let provider = providerSelect.value || null;
+  // A model without a server-side key can't answer, so be honest: tell the user
+  // and run the configured default instead of sending a request that 400s.
+  if (provider && !availableProviders.has(provider)) {
+    const wanted = PROVIDER_LABELS[provider] || provider;
+    logLine(
+      "log-info",
+      `# ${wanted} isn't enabled on this demo (no API key) — answering with the default model`
+    );
+    provider = null;
+  }
+  const effective = provider || defaultProvider;
+  const modelLabel = PROVIDER_LABELS[effective] || effective || "llm";
   logLine("log-q", `> ${question}`);
   const busy = logLine("log-busy", `# querying ${modelLabel} …`);
 
