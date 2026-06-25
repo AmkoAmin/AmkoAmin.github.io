@@ -64,6 +64,12 @@ const askBtn = document.getElementById("ask-btn");
 const log = document.getElementById("lab-log");
 const modeDemo = document.getElementById("mode-demo");
 const modeUpload = document.getElementById("mode-upload");
+const providerWrap = document.getElementById("lab-model");
+const providerSelect = document.getElementById("provider-select");
+
+// Display names for the chat LLM providers the backend exposes via /providers.
+// The embedding model (Voyage) is unaffected by this choice.
+const PROVIDER_LABELS = { anthropic: "Claude (Sonnet 4.6)", openai: "GPT-4o" };
 
 let documentIndexed = false;
 let mode = "demo";
@@ -120,6 +126,29 @@ async function apiErrorMessage(response) {
   }
 }
 
+async function loadProviders() {
+  // Populate the model selector from the backend. Only reveal it when more than
+  // one provider is configured, so it never lies about an unavailable option.
+  try {
+    const response = await fetch(`${API_BASE}/providers`, {
+      signal: AbortSignal.timeout(6000),
+    });
+    if (!response.ok) throw new Error();
+    const data = await response.json();
+    providerSelect.innerHTML = "";
+    for (const id of data.providers) {
+      const option = document.createElement("option");
+      option.value = id;
+      option.textContent = PROVIDER_LABELS[id] || id;
+      providerSelect.append(option);
+    }
+    if (data.default) providerSelect.value = data.default;
+    providerWrap.classList.toggle("hidden", data.providers.length < 2);
+  } catch {
+    providerWrap.classList.add("hidden");
+  }
+}
+
 async function checkUplink() {
   setBadge("", "checking uplink…");
   try {
@@ -130,6 +159,7 @@ async function checkUplink() {
     setBadge("online", "uplink online");
     offlinePanel.classList.add("hidden");
     labUi.classList.remove("hidden");
+    loadProviders();
   } catch {
     setBadge("offline", "uplink offline");
     labUi.classList.add("hidden");
@@ -207,14 +237,16 @@ async function ingest(file) {
 
 async function ask(question) {
   setAskEnabled(false);
+  const provider = providerSelect.value || null;
+  const modelLabel = provider ? PROVIDER_LABELS[provider] || provider : "llm";
   logLine("log-q", `> ${question}`);
-  const busy = logLine("log-busy", "# querying claude …");
+  const busy = logLine("log-busy", `# querying ${modelLabel} …`);
 
   try {
     const response = await fetch(`${API_BASE}/rag/query`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question, top_k: 4, mode }),
+      body: JSON.stringify({ question, top_k: 4, mode, provider }),
     });
     busy.remove();
     if (!response.ok) {

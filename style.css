@@ -472,6 +472,34 @@ h2::after {
   box-shadow: var(--glow-cyan);
 }
 
+.lab-model {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.lab-model select {
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--cyan);
+  background: #0a0a16;
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.lab-model select:hover,
+.lab-model select:focus {
+  border-color: var(--cyan);
+  box-shadow: var(--glow-cyan);
+  outline: none;
+}
+
 .dropzone {
   display: block;
   border: 1px dashed var(--cyan);
