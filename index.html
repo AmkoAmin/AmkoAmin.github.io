@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Amin Skenderi — Computer Engineering student, robotics team lead, systems & AI developer based in Berlin.">
+  <meta name="description" content="Amin Skenderi — AI Engineer (working student) at Mercedes-Benz Tech Innovation and Computer Engineering student at TU Berlin, building LLM systems, C++ software and robots in Berlin.">
   <title>Amin Skenderi // root</title>
   <link rel="canonical" href="https://aminskenderi.me/">
   <meta name="robots" content="index, follow">
@@ -12,10 +12,10 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aminskenderi.me/">
   <meta property="og:title" content="Amin Skenderi">
-  <meta property="og:description" content="Computer Engineering student, robotics team lead, systems & AI developer based in Berlin.">
+  <meta property="og:description" content="AI Engineer (working student) at Mercedes-Benz Tech Innovation and Computer Engineering student at TU Berlin, building LLM systems, C++ software and robots in Berlin.">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Amin Skenderi">
-  <meta name="twitter:description" content="Computer Engineering student, robotics team lead, systems & AI developer based in Berlin.">
+  <meta name="twitter:description" content="AI Engineer (working student) at Mercedes-Benz Tech Innovation and Computer Engineering student at TU Berlin, building LLM systems, C++ software and robots in Berlin.">
 
   <!-- Structured data: Person -->
   <script type="application/ld+json">
@@ -24,7 +24,11 @@
     "@type": "Person",
     "name": "Amin Skenderi",
     "url": "https://aminskenderi.me",
-    "jobTitle": "Computer Engineering Student & Robotics Team Lead",
+    "jobTitle": "AI Engineer (Working Student)",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Mercedes-Benz Tech Innovation GmbH"
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Berlin",
@@ -73,11 +77,12 @@
         <span class="prompt">&gt;</span> <span id="typed"></span><span class="cursor">█</span>
       </p>
       <p class="hero-sub">
-        Computer Engineering @ TU Berlin · Robotics Team Lead · Berlin, Germany
+        AI Engineer @ Mercedes-Benz Tech Innovation · Computer Engineering @ TU Berlin · Berlin, Germany
       </p>
       <div class="hero-actions">
         <a class="btn btn-ghost" href="#projects">view projects</a>
         <a class="btn btn-ghost" href="#contact">make contact</a>
+        <a class="btn btn-ghost" href="Amin_Skenderi_CV.pdf" download>download cv</a>
       </div>
 
       <a href="#pdf-lab" class="lab-callout">
@@ -156,14 +161,17 @@
         <div class="terminal-body">
           <p><span class="prompt">$</span> cat about.txt</p>
           <p>
-            Computer Engineering student and robotics team lead at TU Berlin with
-            hands-on experience in systems programming, distributed systems, and
-            real-time data processing. Proficient in C/C++ and Python, with a
-            growing focus on AI/LLM integration.
+            Computer Engineering student at TU Berlin, currently working as an AI
+            Engineer (working student) at Mercedes-Benz Tech Innovation, where I build
+            LLM evaluation and prompt optimization tooling for an AI service that
+            validates vehicle sales documents. Previously a C++ software engineering
+            intern at Cybus, working on industrial IoT protocol connectors.
           </p>
           <p>
-            Passionate about building containerized, production-ready systems —
-            from low-level file systems in C to RAG pipelines and autonomous robots.
+            Proficient in C/C++ and Python, with hands-on experience in systems
+            programming, distributed systems, and LLM integration. Passionate about
+            building containerized, production-ready systems — from low-level file
+            systems in C to RAG pipelines and autonomous robots.
           </p>
           <p><span class="prompt">$</span> _</p>
         </div>
@@ -185,13 +193,14 @@
           <h3>ai / llm</h3>
           <ul class="chips">
             <li>OpenAI API</li><li>Anthropic API</li><li>LangChain/LangGraph</li>
+            <li>DSPy</li><li>MLflow</li><li>LLM Evaluation (LLM-as-a-Judge)</li>
             <li>RAG pipelines</li><li>Agentic Workflows</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>frameworks &amp; technologies</h3>
           <ul class="chips">
-            <li>FastAPI</li><li>Flask</li><li>ROS 2</li><li>MQTT</li>
+            <li>FastAPI</li><li>Flask</li><li>pytest</li><li>Textual</li><li>Kafka</li><li>ROS 2</li><li>MQTT</li>
             <li>Valgrind</li><li>ZeroMQ</li><li>REST</li>
           </ul>
         </div>
@@ -199,7 +208,8 @@
           <h3>tools</h3>
           <ul class="chips">
             <li>Linux</li><li>Git</li><li>GitHub (CI/CD)</li><li>Docker (Compose)</li>
-            <li>CMake</li><li>colcon</li><li>Azure</li><li>MySQL</li><li>Arduino</li><li>Blender</li>
+            <li>Kubernetes (Helm)</li><li>Datadog</li><li>uv</li>
+            <li>CMake</li><li>colcon</li><li>Azure</li><li>MySQL</li><li>Jira</li><li>Arduino</li><li>Blender</li>
           </ul>
         </div>
         <div class="skill-group">
@@ -220,10 +230,10 @@
           <h3>LLM Document Analysis Pipeline</h3>
           <p>
             Python/FastAPI backend that answers natural-language questions over
-            uploaded PDFs via a RAG pipeline with LangChain, Claude (Sonnet 4.6),
+            uploaded PDFs via a RAG pipeline with LangChain, Claude,
             Voyage embeddings, and a FAISS index, containerized with Docker.
             Hardened for public deployment with domain-scoped CORS, per-IP rate
-            limiting, and upload-size limits; validated with a pytest unit and
+            limiting, upload-size limits, and auth fixes; validated with a pytest unit and
             integration suite. Self-hosted: a static GitHub Pages frontend served
             through a Cloudflare Tunnel to the Dockerized API.
           </p>
@@ -270,11 +280,42 @@
       <h2><span class="h-num">04</span> timeline</h2>
       <ul class="timeline">
         <li>
+          <span class="time">Jul 2026 — present</span>
+          <div>
+            <h3>AI Engineer (Working Student) · Mercedes-Benz Tech Innovation GmbH</h3>
+            <p>Part of a team building an AI service for the vehicle sales back office
+            that automatically validates sales documents such as purchase contracts and
+            contract amendments — Vision-LLM OCR of PDFs, LLM-based field extraction,
+            comparison against system data, and discrepancies surfaced to clerks as hints.</p>
+            <p>Built an internal prompt optimization platform with DSPy: baseline
+            measurement of production prompts, automated optimization (e.g.
+            BootstrapFewShot), evaluation on held-out data with production-identical
+            parsing and verified labels only, experiment tracking in MLflow (metrics,
+            token &amp; dollar costs), and a Textual terminal UI to launch and analyze
+            runs — optimized prompts are review candidates, never auto-deployed. Also
+            migrated a deprecated LLM by benchmarking successor models on quality,
+            latency and cost with an LLM regression test suite (incl. LLM-as-a-Judge),
+            and added token/cost logging.</p>
+          </div>
+        </li>
+        <li>
+          <span class="time">Jan — Jun 2026</span>
+          <div>
+            <h3>Software Engineering Intern (C++) · Cybus GmbH</h3>
+            <p>Built and maintained C++ components for the Connectware industrial
+            IoT platform — protocol connectors for OPC UA, MQTT and Modbus/TCP that
+            normalize heterogeneous shop-floor device data into a unified model, plus
+            a multi-threaded pipeline tuned to cut end-to-end latency for high-frequency
+            sensor streams. Agile team with Git, code reviews and Jira.</p>
+          </div>
+        </li>
+        <li>
           <span class="time">2024 — 2027</span>
           <div>
             <h3>B.Sc. Computer Engineering · TU Berlin</h3>
             <p>4th semester, on track to finish in 5. Top 5% in Data Structures &amp;
-            Algorithms and Signals &amp; Systems, top score in Theoretical Computer Science.</p>
+            Algorithms and Signals &amp; Systems, Top 10% in Semiconductor Physics,
+            top score in Theoretical Computer Science.</p>
           </div>
         </li>
         <li>
@@ -308,6 +349,7 @@
           <ul class="contact-links">
             <li><a href="https://github.com/AmkoAmin">github.com/AmkoAmin</a></li>
             <li><a href="mailto:amin.skenderi.tub@gmail.com">amin.skenderi.tub@gmail.com</a></li>
+            <li><a href="Amin_Skenderi_CV.pdf" download>download cv (pdf)</a></li>
           </ul>
         </div>
       </div>

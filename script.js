@@ -1,5 +1,7 @@
 // ---------- typed tagline ----------
 const phrases = [
+  "AI engineering @ Mercedes-Benz Tech Innovation",
+  "LLM evaluation & prompt optimization",
   "systems programming in C/C++",
   "RAG pipelines & LLM integration",
   "autonomous robots with ROS 2",

@@ -542,6 +542,10 @@ h2 {
   font-size: 0.93rem;
 }
 
+.timeline p + p {
+  margin-top: 0.5rem;
+}
+
 /* ---- contact ---- */
 .contact-links {
   list-style: none;
